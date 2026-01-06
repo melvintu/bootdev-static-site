@@ -3,12 +3,14 @@ from textnode import TextNode, TextType
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
     new_nodes = []
+    #print("split_nodes_delimiter", delimiter)
     for node in old_nodes:
         if node.text_type != TextType.TEXT:
             new_nodes.append(node)
             continue
         split_nodes = []
         split_text = node.text.split(delimiter)
+        #print("## This is split text inside split nodes##", split_text)
         if len(split_text)%2 == 0:
             raise Exception("Invalid markdown syntax: delimiter was not closed")
         for i in range(0, len(split_text)):
