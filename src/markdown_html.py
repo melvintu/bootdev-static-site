@@ -96,3 +96,10 @@ def strip_code_fence(block):
     if lines and lines[-1].startswith("```"):
         lines.pop()
     return "\n".join(lines) + "\n"
+
+def extract_title(markdown):       
+    split_lines = markdown.splitlines()
+    for line in split_lines:
+        if line.startswith("# "):
+            return line[2:]
+    raise Exception("No header found in markdown") 
